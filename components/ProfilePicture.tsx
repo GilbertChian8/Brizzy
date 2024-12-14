@@ -7,7 +7,7 @@ interface ProfilePictureProps {
 
 const ProfilePicture: React.FC<ProfilePictureProps> = ({ imageUrl }) => {
   // Fallback to default image if imageUrl is not provided
-  const defaultImage = require('../assets/images/defaultProfilePic.png'); // Replace with your default image path
+  const defaultImage = require('../assets/images/me.jpeg'); // Replace with your default image path
   const imageSource = imageUrl ? { uri: imageUrl } : defaultImage;
 
   return (

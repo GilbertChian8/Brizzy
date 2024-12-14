@@ -18,6 +18,7 @@ interface PlanCardProps {
   reviewCount: number;
   description: string;
   cost: string;
+  currency?: string; // Optional prop for currency
 }
 
 const PlanCard: React.FC<PlanCardProps> = ({
@@ -28,102 +29,103 @@ const PlanCard: React.FC<PlanCardProps> = ({
   reviewCount,
   description,
   cost,
+  currency = '$',
 }) => {
   return (
-    <View style={styles.card}>
-      {/* Image Section */}
-      <View style={styles.imageContainer}>
-        <Image
-          source={{ uri: imageUri }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-      </View>
-
-      {/* Content Section */}
-      <View style={styles.content}>
-        {/* Overlay Labels */}
-        <View style={styles.labelsContainer}>
-          {labels.map((label, index) => (
-            <Text
-              key={index}
-              style={[styles.label, { backgroundColor: label.color }]}
-            >
-              {label.text}
-            </Text>
-          ))}
+    <View style={styles.shadowWrapper}> 
+      <View style={styles.card}>
+        {/* Image Section */}
+        <View style={styles.imageContainer}>
+          <Image
+            source={{ uri: imageUri }}
+            style={styles.image}
+            resizeMode="cover"
+          />
         </View>
 
-        {/* Title and Bookmark */}
-        <View style={styles.titleRow}>
-          <Text style={styles.title}>{title}</Text>
-          <TouchableOpacity style={styles.bookmarkContainer}>
-            <Text style={styles.bookmark}>
+        {/* Content Section */}
+        <View style={styles.content}>
+          {/* Overlay Labels */}
+          <View style={styles.labelsContainer}>
+            {labels.map((label, index) => (
+              <Text
+                key={index}
+                style={[styles.label, { backgroundColor: label.color }]}
+              >
+                {label.text}
+              </Text>
+            ))}
+          </View>
+
+          {/* Title and Bookmark */}
+          <View style={styles.titleRow}>
+            <Text style={styles.title}>{title}</Text>
+            <TouchableOpacity style={styles.bookmarkContainer}>
               <MaterialIcons name="bookmark-border" size={20} color="black" />
-            </Text>
-          </TouchableOpacity>
-        </View>
+            </TouchableOpacity>
+          </View>
 
-        {/* Ratings */}
-        <Text style={styles.rating}>
-          <AntDesign name="star" size={15} color="#ffe234" /> {rating}/5{' '}
-          <Text style={styles.reviews}>({reviewCount} Reviews)</Text>
-        </Text>
+          {/* Ratings */}
+          <Text style={styles.rating}>
+            <AntDesign name="star" size={15} color="#ffe234" /> {rating}/5{' '}
+            <Text style={styles.reviews}>({reviewCount} Reviews)</Text>
+          </Text>
 
-        {/* Description */}
-        <Text style={styles.description}>{description}</Text>
+          {/* Description */}
+          <Text style={styles.description}>{description}</Text>
 
-        {/* Footer Section */}
-        <View style={styles.footer}>
-          <View>
-            <Text style={styles.cost}>${cost} AUD</Text>
-            <Text style={styles.costDescription}>Estimate Cost / Individual</Text>
+          {/* Footer Section */}
+          <View style={styles.footer}>
+            <View>
+              <Text style={styles.cost}>
+                {currency}
+                {cost} AUD
+              </Text>
+              <Text style={styles.costDescription}>
+                Estimate Cost / Individual
+              </Text>
+            </View>
           </View>
         </View>
       </View>
+    
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  shadowWrapper: {
+    shadowColor: '#000', // Shadow color for iOS
+    shadowOffset: { width: 0, height: 4 }, // Shadow position
+    shadowOpacity: 0.1, // Adjust shadow transparency
+    shadowRadius: 8, // Spread of shadow
+    elevation: 6, // For Android shadow
+    backgroundColor: 'transparent', // Ensure no background covers the shadow
+    borderRadius: 20, // Match the card's borderRadius
+  },
   card: {
     width: 338,
-    height: 275,
     backgroundColor: '#fff',
     borderRadius: 20,
-    overflow: 'hidden', // Ensures rounded corners for the content
+    overflow: 'hidden', // Keep rounded corners but avoid clipping shadow
     marginBottom: 20,
-    // Shadow for iOS
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 0 }, // Shadow spreads evenly
-    shadowOpacity: 0.15, // Slightly lighter shadow
-    shadowRadius: 10, // Softer, larger shadow
-    // Shadow for Android
-    elevation: 6, // Moderate elevation for balanced shadow
-
   },
   imageContainer: {
-    width: 'fit',
+    width: 320, // Changed from 'fit' to a fixed width
     height: 88,
     borderRadius: 20,
-    alignItems: "center",
-    justifyContent:"center",
-    alignSelf:"center",
-    marginLeft:10,
-    marginRight:10,
-    marginTop:10,
+    alignSelf: 'center',
+    marginTop: 10,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 }, // Adds shadow to the bottom of the image
-    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
     shadowRadius: 5,
-    elevation: 4, // Android shadow
+    elevation: 4,
   },
   image: {
-    width: 320,
-    height: 88,
-    borderRadius:20,
-    
-    
+    width: '100%',
+    height: '100%',
+    borderRadius: 20,
   },
   labelsContainer: {
     position: 'absolute',
@@ -137,17 +139,8 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 4,
     color: '#fff',
-    fontWeight: 'Medium',
+    fontWeight: '500', // Fixed to a valid value
     marginRight: 2,
-    
-  },
-  individualLabel: {
-    backgroundColor: '#FF5733', // Orange
-    marginLeft:6,
-  },
-  dayTimeLabel: {
-    backgroundColor: '#007BFF', // Blue
-    marginLeft:6,
   },
   content: {
     padding: 15,
@@ -156,8 +149,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop:16,
-    marginBottom:2,
+    marginTop: 16,
+    marginBottom: 2,
   },
   title: {
     fontSize: 18,
@@ -182,23 +175,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    
   },
   cost: {
     fontSize: 16,
     fontWeight: 'bold',
-    alignSelf: 'flex-end',
     color: '#000',
+    textAlign: 'right'
   },
   costDescription: {
     fontSize: 12,
     color: '#777',
   },
   bookmarkContainer: {
-    //padding: 10,
-  },
-  bookmark: {
-    fontSize: 18,
-    color: '#3498DB', // Blue
+    padding: 5, 
   },
 });
 

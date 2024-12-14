@@ -19,13 +19,13 @@ export default function Account() {
         <View style={styles.base}>
             <View style={styles.container}>
                 <ProfilePicture/>
-                <Text style={styles.username}>Sarah Smith</Text>
+                <Text style={styles.username}>Gilbert Hensem</Text>
             </View>
             <View style={styles.wrapper}>
-                <CustomButton onPress={() => router.push("/editaccount")} label="Edit Account Detail" color="#ffffff" textColor="#000000" style={styles.button} />
-                <CustomButton onPress={() => router.push("/main")} label="Help Center" color="#ffffff" textColor="#000000" style={styles.button} />
-                <CustomButton onPress={() => router.push("/setting")} label="Settings" color="#ffffff" textColor="#000000" style={styles.button} />
-                <CustomButton onPress={() => router.push("/")} label="Log Out" color="#ffffff" textColor="#000000" style={styles.button} />
+                <CustomButton onPress={() => router.push("/editaccount")} label="Edit Account Detail" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }} />
+                <CustomButton onPress={() => router.push("/main")} label="Help Center" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }}/>
+                <CustomButton onPress={() => router.push("/setting")} label="Settings" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }}/>
+                <CustomButton onPress={() => router.push("/")} label="Log Out" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }}/>
                 <Text style={styles.version}>Version ****</Text>
                 
             </View>
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#376BF0',
     },
     container: {
-        flex: 0.5,
+        flex: 0.7,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#376BF0',

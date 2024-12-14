@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, TouchableOpacity, Image,} from "react-native";
-import CustomButton from "../components/CustomButton"; 
+import CustomButton from "../../components/CustomButton"; 
 import { Link, useRouter } from "expo-router";
 
 export default function Welcome() {

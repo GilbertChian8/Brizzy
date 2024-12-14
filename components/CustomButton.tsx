@@ -9,7 +9,9 @@ interface ButtonProps {
   textStyle?: TextStyle; // Optional custom styles for the text
   color?: string; // Optional background color
   textColor?: string; // Optional text color
+  borderColor?: string;
   disabled?: boolean; // Optional disabled state
+  
 }
 
 // Button Component
@@ -21,6 +23,7 @@ const CustomButton: React.FC<ButtonProps> = ({
   color = '#007AFF', // Default background color (blue)
   textColor = '#FFFFFF', // Default text color (white)
   disabled = false, // Default to not disabled
+  borderColor = '#007AFF',
 }) => {
   return (
     <TouchableOpacity

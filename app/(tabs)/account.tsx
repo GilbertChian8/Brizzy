@@ -20,7 +20,7 @@ export default function Account() {
             <View style={styles.container}>
                 <View style={styles.profile}>
                     <ProfilePicture/>
-                    <Text style={styles.username}>Gilbert Hensem</Text>
+                    <Text style={styles.username}>Best Candidate</Text>
                 </View>
             </View>
             <View style={styles.wrapper}>

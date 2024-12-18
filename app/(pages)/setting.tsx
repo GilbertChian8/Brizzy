@@ -23,7 +23,7 @@ const Setting: React.FC = () => {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         {/* Header */}
-        <TouchableOpacity onPress={() => router.push("/account")}> 
+        <TouchableOpacity style={styles.backButton} onPress={() => router.push("/account")}> 
           <Ionicons name="arrow-back" size={24} color="black" />
         </TouchableOpacity>
         <View style={styles.header}>
@@ -101,6 +101,25 @@ const styles = StyleSheet.create({
   settingValue: {
     fontSize: 16,
     color: "#555",
+  },
+  backButton: {
+    position: "absolute",
+    top: 10,
+    left: 20,
+    zIndex: 10,
+    width: 40, 
+    height: 40, 
+    borderRadius: 20,
+    borderWidth: 1, 
+    borderColor: "#000000", 
+    alignItems: "center", 
+    justifyContent: "center", 
+    backgroundColor: "#FFFFFF", 
+    // elevation: 3, 
+    // shadowColor: "#000", 
+    // shadowOffset: { width: 0, height: 2 }, 
+    // shadowOpacity: 0.3, 
+    // shadowRadius: 3, 
   },
 });
 

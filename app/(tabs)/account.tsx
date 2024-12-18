@@ -18,12 +18,14 @@ export default function Account() {
     return (
         <View style={styles.base}>
             <View style={styles.container}>
-                <ProfilePicture/>
-                <Text style={styles.username}>Gilbert Hensem</Text>
+                <View style={styles.profile}>
+                    <ProfilePicture/>
+                    <Text style={styles.username}>Gilbert Hensem</Text>
+                </View>
             </View>
             <View style={styles.wrapper}>
-                <CustomButton onPress={() => router.push("/editaccount")} label="Edit Account Detail" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }} />
-                <CustomButton onPress={() => router.push("/main")} label="Help Center" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }}/>
+                <CustomButton onPress={() => router.push("/editAccount")} label="Edit Account Detail" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }} />
+                <CustomButton onPress={() => router.push("/helpCenter")} label="Help Center" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }}/>
                 <CustomButton onPress={() => router.push("/setting")} label="Settings" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }}/>
                 <CustomButton onPress={() => router.push("/")} label="Log Out" color="#ffffff" textColor="#000000" style={styles.button} textStyle={{ alignSelf: 'flex-start' }}/>
                 <Text style={styles.version}>Version ****</Text>
@@ -39,21 +41,22 @@ const styles = StyleSheet.create({
         backgroundColor: '#376BF0',
     },
     container: {
-        flex: 0.7,
+        flex: 0.4,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#376BF0',
-        paddingTop:30,
+        paddingTop: 10,
+    },
+    profile: {
+        alignItems: 'center',
+        paddingTop: 10,
     },
     wrapper: {
-        flex: 1,
-        backgroundColor: '#ffffff',
-        borderColor: '#000000',
+        flex: 0.65,
+        backgroundColor: '#fff',
         borderTopLeftRadius: 50,
         borderTopRightRadius: 50,
-        justifyContent: 'center',
+        paddingTop: 40,
         alignItems: 'center',
-        paddingVertical: 20, // Add padding to control internal spacing
         gap: 15, // Add spacing between children
     },
     button: {

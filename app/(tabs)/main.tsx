@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,
   FlatList,
+  TouchableOpacity
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useRouter } from "expo-router";
@@ -124,17 +125,21 @@ export default function Main() {
           data={planData}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View style={styles.cardWrapper}>
-                <PlanCard
-                    title={item.title}
-                    imageUri={item.imageUri}
-                    labels={item.labels}
-                    rating={item.rating}
-                    reviewCount={item.reviewCount}
-                    description={item.description}
-                    cost={item.cost}
-                />
-            </View>
+            <TouchableOpacity
+              onPress={() => router.push({ pathname: "/planDetails", params: { id: item.id } })}
+            >
+              <View style={styles.cardWrapper}>
+                  <PlanCard
+                      title={item.title}
+                      imageUri={item.imageUri}
+                      labels={item.labels}
+                      rating={item.rating}
+                      reviewCount={item.reviewCount}
+                      description={item.description}
+                      cost={item.cost}
+                  />
+              </View>
+            </TouchableOpacity>
           )}
           contentContainerStyle={styles.flatListContent}
           showsVerticalScrollIndicator={false}

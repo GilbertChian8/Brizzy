@@ -19,6 +19,8 @@ interface PlanCardProps {
   description: string;
   cost: string;
   currency?: string; // Optional prop for currency
+  isBookmarked: boolean;
+  
 }
 
 const PlanCard: React.FC<PlanCardProps> = ({
@@ -30,7 +32,15 @@ const PlanCard: React.FC<PlanCardProps> = ({
   description,
   cost,
   currency = '$',
+  isBookmarked = false, // Default to unbookmarked
 }) => {
+
+  const [bookmarked, setBookmarked] = React.useState(isBookmarked); // Local state
+
+  const toggleBookmark = () => {
+    setBookmarked(!bookmarked); // Toggle state
+  };
+
   return (
     <View style={styles.shadowWrapper}> 
       <View style={styles.card}>
@@ -61,8 +71,12 @@ const PlanCard: React.FC<PlanCardProps> = ({
           <View style={styles.titleRow}>
             <Text style={styles.title}>{title}</Text>
             <TouchableOpacity style={styles.bookmarkContainer}>
-              <MaterialIcons name="bookmark-border" size={20} color="black" />
-            </TouchableOpacity>
+              <MaterialIcons
+                name={isBookmarked ? "bookmark" : "bookmark-border"} // Toggle the icon
+                size={20}
+                color="black"
+              />
+          </TouchableOpacity>
           </View>
 
           {/* Ratings */}
@@ -111,7 +125,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   imageContainer: {
-    width: 320, // Changed from 'fit' to a fixed width
+    width: 320, 
     height: 88,
     borderRadius: 20,
     alignSelf: 'center',
@@ -139,7 +153,7 @@ const styles = StyleSheet.create({
     paddingVertical: 2,
     borderRadius: 4,
     color: '#fff',
-    fontWeight: '500', // Fixed to a valid value
+    fontWeight: '500',
     marginRight: 2,
   },
   content: {

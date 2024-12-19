@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useFonts } from "expo-font";
 import "react-native-url-polyfill/auto";
 import { SplashScreen, Stack, Slot,  useRouter  } from "expo-router";
+import React from "react";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -38,7 +39,7 @@ const RootLayout: React.FC = () => {
 
   return (
     <>
-      <Slot /> {/* Ensure Slot is rendered for navigation */}
+      <Slot />;
     </>
   );
 

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: 140,
     height: 180,
-    marginRight: 10, // Spacing between cards
+    marginRight: 10, 
     justifyContent: "center",
     alignItems: "flex-start", 
     padding: 15,

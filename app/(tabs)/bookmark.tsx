@@ -101,8 +101,7 @@ export default function Bookmark() {
                 rating={item.rating}
                 reviewCount={item.reviewCount}
                 description={item.description}
-                cost={item.cost}
-              />
+                cost={item.cost} isBookmarked={true}              />
             </View>
           )}
           contentContainerStyle={styles.flatListContent}

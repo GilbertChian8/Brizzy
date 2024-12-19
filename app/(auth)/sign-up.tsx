@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {View, Text, TextInput, StyleSheet, KeyboardAvoidingView, Platform, TouchableOpacity, Image,} from "react-native";
-import CustomButton from "../components/CustomButton"; 
+import CustomButton from "../../components/CustomButton"; 
 import { Link } from "expo-router";
 
 export default function SignUp() {
@@ -90,13 +90,13 @@ export default function SignUp() {
       {/* Social Media Login Options */}
       <View style={styles.socialContainer}>
         <TouchableOpacity>
-          <Image source={require("../assets/icons/google.png")} style={styles.socialIcon} />
+          <Image source={require("../../assets/icons/google.png")} style={styles.socialIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image source={require("../assets/icons/facebook.png")} style={styles.socialIcon} />
+          <Image source={require("../../assets/icons/facebook.png")} style={styles.socialIcon} />
         </TouchableOpacity>
         <TouchableOpacity>
-          <Image source={require("../assets/icons/apple.png")} style={styles.socialIcon} />
+          <Image source={require("../../assets/icons/apple.png")} style={styles.socialIcon} />
         </TouchableOpacity>
       </View>
 
